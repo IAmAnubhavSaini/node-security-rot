@@ -1,3 +1,3 @@
 # node-security-rot
 
-Rotations on strings | for mother security
+Rotations on strings | for security
