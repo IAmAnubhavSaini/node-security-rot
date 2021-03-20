@@ -6,7 +6,7 @@ function rot47(input) {
         .map(i => i % 127)
         .map(i => i < 80 ? i + 33 : i)
         .map(i => String.fromCharCode(i))
-        .join('')
+        .join('');
 }
 
-module.exports = rot47
+module.exports = rot47;

@@ -1,33 +1,33 @@
-const {rot13n, rotations} = require('./rot13n')
+const {rot13n, rotations} = require('./rot13n');
 
-const lower = 'abcdefghijklmnopqrstuvwxyz'
-const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const numbers = '0123456789'
+const lower = 'abcdefghijklmnopqrstuvwxyz';
+const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numbers = '0123456789';
 
 describe('rot13n', () => {
     for (let i = 1; i <= 26; i++) {
         /* rot13n() */
         (k => it(`rotates lower characters correctly for n = ${k}`, () => {
-            const actual = rot13n(lower, k)
-            const expected = lower.slice(k) + lower.slice(0, k)
-            expect(actual).toEqual(expected)
+            const actual = rot13n(lower, k);
+            const expected = lower.slice(k) + lower.slice(0, k);
+            expect(actual).toEqual(expected);
         }))(i);
 
         /* rot13n(rot13n()) */
         (j => it(`double rotation on lower characters does not nullify for n = ${j}`, () => {
-            const actual = rot13n(rot13n(lower, j), j)
-            const expected = lower
+            const actual = rot13n(rot13n(lower, j), j);
+            const expected = lower;
             if (i === 26 || i === 13) {
-                expect(actual).toEqual(expected)
+                expect(actual).toEqual(expected);
             } else {
-                expect(actual).not.toEqual(expected)
+                expect(actual).not.toEqual(expected);
             }
         }))(i);
 
         (l => it(`rotates upper characters correctly for n = ${l}`, () => {
-            const actual = rot13n(upper, l)
-            const expected = upper.slice(i) + upper.slice(0, l)
-            expect(actual).toEqual(expected)
+            const actual = rot13n(upper, l);
+            const expected = upper.slice(i) + upper.slice(0, l);
+            expect(actual).toEqual(expected);
         }))(i);
     }
 
@@ -52,7 +52,7 @@ describe('rot13n', () => {
     //     const expected = rotatedUpper + numbers + rotatedLower
     //     expect(actual).toEqual(expected)
     // })
-})
+});
 
 
 describe('rotations', () => {
@@ -82,10 +82,10 @@ describe('rotations', () => {
         {i: 23, rot: 'xyzabcdefghijklmnopqrstuvw'},
         {i: 24, rot: 'yzabcdefghijklmnopqrstuvwx'},
         {i: 25, rot: 'zabcdefghijklmnopqrstuvwxy'},
-        {i: 26, rot: 'abcdefghijklmnopqrstuvwxyz'}]
+        {i: 26, rot: 'abcdefghijklmnopqrstuvwxyz'}];
 
     it('generates output correctly', () => {
-        const actual = rotations(lower)
-        expect(actual).toEqual(expected)
-    })
-})
+        const actual = rotations(lower);
+        expect(actual).toEqual(expected);
+    });
+});
